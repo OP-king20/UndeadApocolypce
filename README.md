@@ -1,2 +1,4 @@
 # UndeadApocolypce
-Zombie Survival agme
+Zombie Survival game
+
+Made by Duckalot Development Studio
