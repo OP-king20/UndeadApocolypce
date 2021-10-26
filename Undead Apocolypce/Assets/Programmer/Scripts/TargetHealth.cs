@@ -10,9 +10,19 @@ public class TargetHealth : MonoBehaviour
 
     public bool TakingDamage;
 
+    public List<GameObject> hitBoxes;
+
+
 
     private WaitForSeconds regenTime = new WaitForSeconds(0.01f);
     private Coroutine regen;
+
+
+    private void Start()
+    {
+        health = maxHealth;
+        
+    }
 
     public void TakeDamage(float amount)
     {
@@ -22,6 +32,7 @@ public class TargetHealth : MonoBehaviour
         if (health <= 0)
         {
             Die();
+
         }
     }
 

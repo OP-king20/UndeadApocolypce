@@ -103,7 +103,7 @@ public class Gun : MonoBehaviour
                 
                 //Setup damage Function
                 Debug.Log("Hit Enemy");
-                TargetHealth target = rayHit.transform.GetComponent<TargetHealth>();
+                TargetHealth target = rayHit.transform.GetComponentInParent<TargetHealth>(); //Referencing the TargetHealth script
                 if (target != null)
                 {
                     target.TakeDamage(damage);
