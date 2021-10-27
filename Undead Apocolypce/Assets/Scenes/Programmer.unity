@@ -6817,8 +6817,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7226193406085812884, guid: 9bc583dff4924604287278ce3953c8aa, type: 3}
+      propertyPath: range
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226193406085812884, guid: 9bc583dff4924604287278ce3953c8aa, type: 3}
       propertyPath: spread
-      value: 2
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7226193406085812884, guid: 9bc583dff4924604287278ce3953c8aa, type: 3}
       propertyPath: orgPosX
@@ -6836,6 +6840,14 @@ PrefabInstance:
       propertyPath: firePoint
       value: 
       objectReference: {fileID: 256963545}
+    - target: {fileID: 7226193406085812884, guid: 9bc583dff4924604287278ce3953c8aa, type: 3}
+      propertyPath: magazineSize
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226193406085812884, guid: 9bc583dff4924604287278ce3953c8aa, type: 3}
+      propertyPath: timeBetweenShooting
+      value: 0.075
+      objectReference: {fileID: 0}
     - target: {fileID: 7625205127953755954, guid: 9bc583dff4924604287278ce3953c8aa, type: 3}
       propertyPath: m_Layer
       value: 6
