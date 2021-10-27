@@ -5,11 +5,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     //Movement varibles
-    public float Walkspeed = 3f;
-    public float Crouchspeed = 1f;
-    public float Runspeed = 6f;
-    public float SlideSpeed = 8f;
-    public float Jumpheight = 2f;
+    public float Walkspeed = 4f;
+    public float CrouchSpeed = 2f;
+    public float Runspeed = 7f;
+    public float Jumpheight = 3f;
     public CharacterController controller;
 
     public static PlayerMovement instance;
@@ -21,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundMask;
     public float groundDistance = 0.4f;
-    public bool isGrounded = true;
+    public bool isGrounded;
     bool inair = false;
 
     //Gravity
@@ -39,9 +38,9 @@ public class PlayerMovement : MonoBehaviour
         }
 
         float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical"); 
+        float z = Input.GetAxis("Vertical");
         Vector3 move = transform.right * x + transform.forward * z; //Current input from keyboard
-        
+
 
 
 
@@ -49,43 +48,27 @@ public class PlayerMovement : MonoBehaviour
         {
 
             
-            //Fix so you cannot Jump or crouch while sliding
+
             if (Input.GetKey(KeyCode.LeftShift) && isGrounded == true && StaminaBar.instance.currentStamina >= 0.1f)
             {
 
-                
-
-                if(Input.GetKeyDown(KeyCode.LeftControl))
-                {
-                    controller.height = 0.6f;
-                    controller.Move(move * SlideSpeed * Time.deltaTime);
-                    StaminaBar.instance.UseStamina(2f);
-
-                    isGrounded = false;
-
-                }
-                else
-                {
-                    controller.Move(move * Runspeed * Time.deltaTime);
-                    StaminaBar.instance.UseStamina(.1f);
-                }
+                controller.Move(move * Runspeed * Time.deltaTime);
+                StaminaBar.instance.UseStamina(.1f);
             }
             else if (Input.GetKey(KeyCode.LeftShift) && StaminaBar.instance.currentStamina <= 0f)
             {
                 controller.Move(move * Walkspeed * Time.deltaTime);
             }
-
-            if(Input.GetKey(KeyCode.LeftControl) && isGrounded == true)
+            else if(Input.GetKey(KeyCode.LeftControl) && isGrounded == true)
             {
-                controller.height = 0.75f;
-                controller.Move(move * Crouchspeed * Time.deltaTime);
+                controller.height = .75f;
+                controller.Move(move * CrouchSpeed * Time.deltaTime);
             }
             else
             {
-                controller.height = 2f;
                 controller.Move(move * Walkspeed * Time.deltaTime);
+                controller.height = 2f;
             }
-
 
 
             if (Input.GetButtonDown("Jump") && isGrounded == true && StaminaBar.instance.currentStamina >= 25f)
@@ -94,7 +77,6 @@ public class PlayerMovement : MonoBehaviour
                 StaminaBar.instance.UseStamina(25f);
                 inair = true; //Enables in airmovement
                 prevPos = move;
-                isGrounded = false;
 
             }
             else if (Input.GetButtonDown("Jump") && isGrounded == true && StaminaBar.instance.currentStamina <= 24f)
@@ -110,9 +92,9 @@ public class PlayerMovement : MonoBehaviour
             }
 
         }
-        else if(!isGrounded && !inair) //In airmovement
+        else if (!isGrounded && !inair) //In airmovement
         {
-            
+
             //Takes the previous "move" input and makes it the deafult direction you're going in
             controller.Move(prevPos * Walkspeed * Time.deltaTime);
         }
