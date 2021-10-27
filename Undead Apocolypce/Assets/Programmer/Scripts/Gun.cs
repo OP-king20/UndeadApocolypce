@@ -19,16 +19,28 @@ public class Gun : MonoBehaviour
     public int magazineSize, bulletsPerTap;
     public bool allowButtonHold;
     int bulletsLeft, bulletsShot;
-
+    
 
     //bools 
     bool shooting, readyToShoot, reloading;
 
+    [Space]
     //Reference
     public Camera fpsCam;
     public RaycastHit rayHit;
     public GameObject firePoint;
 
+
+    [Space]
+    public float aimX;
+    public float aimY;
+    public float aimZ;
+
+    public float orgPosX;
+    public float orgPosY;
+    public float orgPosZ;
+
+    [Space]
     //Graphics
     public GameObject bulletHoleGraphic;
     public ParticleSystem muzzleFlash;
@@ -53,16 +65,17 @@ public class Gun : MonoBehaviour
         if (allowButtonHold) shooting = Input.GetKey(KeyCode.Mouse0);
         else shooting = Input.GetKeyDown(KeyCode.Mouse0);
 
+        //TEMP AIM SYSTEM
         //Aiminn system
         if (Input.GetKey(KeyCode.Mouse1))
         {
            // Debug.Log("aiming");
-            gameObject.transform.localPosition = new Vector3(0f, -0.1f, 0.8f);
+            gameObject.transform.localPosition = new Vector3(aimX, aimY, aimZ);
         }
         else
         {
            // Debug.Log("Not aiming");
-            gameObject.transform.localPosition = new Vector3(0.35f, -0.25f, 0.6f);
+            gameObject.transform.localPosition = new Vector3(orgPosX, orgPosY, orgPosZ);
 
         }
 

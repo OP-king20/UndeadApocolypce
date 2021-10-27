@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     //Movement varibles
     public float Walkspeed = 4f;
     public float CrouchSpeed = 2f;
+    public float SlideSpeed = 8f;
     public float Runspeed = 7f;
     public float Jumpheight = 3f;
     public CharacterController controller;
@@ -54,6 +55,15 @@ public class PlayerMovement : MonoBehaviour
 
                 controller.Move(move * Runspeed * Time.deltaTime);
                 StaminaBar.instance.UseStamina(.1f);
+
+                if(Input.GetKey(KeyCode.X) && isGrounded == true)
+                {
+                    controller.Move(move * SlideSpeed * Time.deltaTime);
+                    controller.height = 0.5f;
+                    StaminaBar.instance.UseStamina(1f);
+                    isGrounded = false;
+
+                }
             }
             else if (Input.GetKey(KeyCode.LeftShift) && StaminaBar.instance.currentStamina <= 0f)
             {
