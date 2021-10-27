@@ -27,6 +27,7 @@ public class Gun : MonoBehaviour
     //Reference
     public Camera fpsCam;
     public RaycastHit rayHit;
+    public GameObject firePoint;
 
     //Graphics
     public GameObject bulletHoleGraphic;
@@ -79,19 +80,13 @@ public class Gun : MonoBehaviour
         readyToShoot = false;
 
         //Spread
-        float x = Random.Range(-spread, spread);
-        float y = Random.Range(-spread, spread);
-
         //Calculate Direction with Spread
-        Vector3 direction = fpsCam.transform.forward + new Vector3(x, y, 0);
-
-        //if(PlayerMovement.instance.controller.velocity.magnitude > 0)
-        //{
-        //    spread = spread * 1.5f;
-        //}
+        Vector3 deviation3D = Random.insideUnitCircle * spread;
+        Quaternion rot = Quaternion.LookRotation(Vector3.forward * range + deviation3D);
+        Vector3 forwardVector = fpsCam.transform.rotation * rot * Vector3.forward;
 
         //RayCast
-        if (Physics.Raycast(fpsCam.transform.position, direction, out rayHit, range))
+        if (Physics.Raycast(firePoint.transform.position, forwardVector, out rayHit, range))
         {
             Debug.Log(rayHit.collider.name);
             //Plays the muzzleflash
