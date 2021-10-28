@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     controller.Move(move * SlideSpeed * Time.deltaTime);
                     controller.height = 0.5f;
-                    StaminaBar.instance.UseStamina(1f);
+                    StaminaBar.instance.UseStamina(.5f);
                     isGrounded = false;
 
                 }

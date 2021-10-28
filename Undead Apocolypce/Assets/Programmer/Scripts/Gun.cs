@@ -44,6 +44,8 @@ public class Gun : MonoBehaviour
     //Graphics
     public GameObject bulletHoleGraphic;
     public ParticleSystem muzzleFlash;
+    public ParticleSystem hitEffect;
+    public TrailRenderer bulletTracer;
     public CameraShake CameraShake;
     public float camShakeMagnitude, camShakeDuration;
     public TextMeshProUGUI text;
@@ -92,6 +94,11 @@ public class Gun : MonoBehaviour
     {
         readyToShoot = false;
 
+        
+ 
+
+
+
         //Spread
         //Calculate Direction with Spread
         Vector3 deviation3D = Random.insideUnitCircle * spread;
@@ -101,9 +108,18 @@ public class Gun : MonoBehaviour
         //RayCast
         if (Physics.Raycast(firePoint.transform.position, forwardVector, out rayHit, range))
         {
+
+            var tracer = Instantiate(bulletTracer, firePoint.transform.position, Quaternion.identity);
+            tracer.AddPosition(firePoint.transform.position);
+
             Debug.Log(rayHit.collider.name);
-            //Plays the muzzleflash
+            //Plays the muzzleflash and Hiteffect
             muzzleFlash.Play();
+            hitEffect.transform.position = rayHit.point;
+            hitEffect.transform.forward = rayHit.normal;
+            hitEffect.Emit(5);
+
+            tracer.transform.position = rayHit.point;
 
             if (rayHit.collider.CompareTag("Enemy"))
             {
