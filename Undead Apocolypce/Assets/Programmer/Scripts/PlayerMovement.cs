@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float CrouchSpeed = 2f;
     public float Runspeed = 7f;
     public float Jumpheight = 3f;
+    private Vector3 moveDirection = Vector3.zero;
     public CharacterController controller;
 
     public static PlayerMovement instance;
