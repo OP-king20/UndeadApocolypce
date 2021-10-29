@@ -5,6 +5,7 @@ using TMPro;
 
 public class Gun : MonoBehaviour
 {
+
     /*TODO
      * Fix spread so it also gives some variation over the X- axis, also add a recoil force when fireing. 
      * Add higher spread when moving/jumping
@@ -19,7 +20,7 @@ public class Gun : MonoBehaviour
     public int magazineSize, bulletsPerTap;
     public bool allowButtonHold;
     int bulletsLeft, bulletsShot;
-    
+
 
     //bools 
     bool shooting, readyToShoot, reloading;
@@ -71,17 +72,18 @@ public class Gun : MonoBehaviour
         //Aiminn system
         if (Input.GetKey(KeyCode.Mouse1))
         {
-           // Debug.Log("aiming");
+            // Debug.Log("aiming");
             gameObject.transform.localPosition = new Vector3(aimX, aimY, aimZ);
         }
         else
         {
-           // Debug.Log("Not aiming");
+            // Debug.Log("Not aiming");
             gameObject.transform.localPosition = new Vector3(orgPosX, orgPosY, orgPosZ);
 
         }
 
-        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading) Reload();
+        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading)
+            Reload();
 
         //Shoot
         if (readyToShoot && shooting && !reloading && bulletsLeft > 0)
@@ -94,8 +96,8 @@ public class Gun : MonoBehaviour
     {
         readyToShoot = false;
 
-        
- 
+
+
 
 
 
@@ -124,7 +126,7 @@ public class Gun : MonoBehaviour
             if (rayHit.collider.CompareTag("Enemy"))
             {
 
-                
+
                 //Setup damage Function
                 Debug.Log("Hit Enemy");
                 TargetHealth target = rayHit.transform.GetComponentInParent<TargetHealth>(); //Referencing the TargetHealth script
@@ -138,11 +140,11 @@ public class Gun : MonoBehaviour
                     rayHit.rigidbody.AddForce(-rayHit.normal * impactForce);
                 }
             }
-                
+
         }
 
         //ShakeCamera
-       CameraShake.Shake(camShakeDuration, camShakeMagnitude);
+        CameraShake.Shake(camShakeDuration, camShakeMagnitude);
 
         //Graphics
         var tempbullet = Instantiate(bulletHoleGraphic, rayHit.point, Quaternion.LookRotation(rayHit.normal));
