@@ -5,6 +5,7 @@ using TMPro;
 
 public class Gun : MonoBehaviour
 {
+
     /*TODO
      * Fix spread so it also gives some variation over the X- axis, also add a recoil force when fireing. 
      * Add higher spread when moving/jumping
@@ -24,14 +25,28 @@ public class Gun : MonoBehaviour
     //bools 
     bool shooting, readyToShoot, reloading;
 
+    [Space]
     //Reference
     public Camera fpsCam;
     public RaycastHit rayHit;
     public GameObject firePoint;
 
+
+    [Space]
+    public float aimX;
+    public float aimY;
+    public float aimZ;
+
+    public float orgPosX;
+    public float orgPosY;
+    public float orgPosZ;
+
+    [Space]
     //Graphics
     public GameObject bulletHoleGraphic;
     public ParticleSystem muzzleFlash;
+    public ParticleSystem hitEffect;
+    public TrailRenderer bulletTracer;
     public CameraShake CameraShake;
     public float camShakeMagnitude, camShakeDuration;
     public TextMeshProUGUI text;
@@ -53,20 +68,22 @@ public class Gun : MonoBehaviour
         if (allowButtonHold) shooting = Input.GetKey(KeyCode.Mouse0);
         else shooting = Input.GetKeyDown(KeyCode.Mouse0);
 
+        //TEMP AIM SYSTEM
         //Aiminn system
         if (Input.GetKey(KeyCode.Mouse1))
         {
-           // Debug.Log("aiming");
-            gameObject.transform.localPosition = new Vector3(0f, -0.1f, 0.8f);
+            // Debug.Log("aiming");
+            gameObject.transform.localPosition = new Vector3(aimX, aimY, aimZ);
         }
         else
         {
-           // Debug.Log("Not aiming");
-            gameObject.transform.localPosition = new Vector3(0.35f, -0.25f, 0.6f);
+            // Debug.Log("Not aiming");
+            gameObject.transform.localPosition = new Vector3(orgPosX, orgPosY, orgPosZ);
 
         }
 
-        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading) Reload();
+        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading)
+            Reload();
 
         //Shoot
         if (readyToShoot && shooting && !reloading && bulletsLeft > 0)
@@ -79,6 +96,11 @@ public class Gun : MonoBehaviour
     {
         readyToShoot = false;
 
+
+
+
+
+
         //Spread
         //Calculate Direction with Spread
         Vector3 deviation3D = Random.insideUnitCircle * spread;
@@ -88,14 +110,23 @@ public class Gun : MonoBehaviour
         //RayCast
         if (Physics.Raycast(firePoint.transform.position, forwardVector, out rayHit, range))
         {
+
+            var tracer = Instantiate(bulletTracer, firePoint.transform.position, Quaternion.identity);
+            tracer.AddPosition(firePoint.transform.position);
+
             Debug.Log(rayHit.collider.name);
-            //Plays the muzzleflash
+            //Plays the muzzleflash and Hiteffect
             muzzleFlash.Play();
+            hitEffect.transform.position = rayHit.point;
+            hitEffect.transform.forward = rayHit.normal;
+            hitEffect.Emit(5);
+
+            tracer.transform.position = rayHit.point;
 
             if (rayHit.collider.CompareTag("Enemy"))
             {
 
-                
+
                 //Setup damage Function
                 Debug.Log("Hit Enemy");
                 TargetHealth target = rayHit.transform.GetComponentInParent<TargetHealth>(); //Referencing the TargetHealth script
@@ -109,11 +140,11 @@ public class Gun : MonoBehaviour
                     rayHit.rigidbody.AddForce(-rayHit.normal * impactForce);
                 }
             }
-                
+
         }
 
         //ShakeCamera
-       CameraShake.Shake(camShakeDuration, camShakeMagnitude);
+        CameraShake.Shake(camShakeDuration, camShakeMagnitude);
 
         //Graphics
         var tempbullet = Instantiate(bulletHoleGraphic, rayHit.point, Quaternion.LookRotation(rayHit.normal));
