@@ -3,23 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Gun : MonoBehaviour
+public class Gun_BulletDrop : MonoBehaviour
 {
+    class Bullet
+    {
+        public float time;
+        public Vector3 initialPosistion;
+        public Vector3 initialVelocity;
+        public TrailRenderer tracer;
 
-    /*TODO
-     * Fix spread so it also gives some variation over the X- axis, also add a recoil force when fireing. 
-     * Add higher spread when moving/jumping
-     * 
-     */
+    }
 
 
 
     //Gun stats
     public int damage;
-    public float timeBetweenShooting, spread, range, reloadTime, timeBetweenShots, impactForce;
+    public float timeBetweenShooting, spread, range, reloadTime, timeBetweenShots, impactForce, bulletSpeed, bulletDrop;
     public int magazineSize, bulletsPerTap;
     public bool allowButtonHold;
     int bulletsLeft, bulletsShot;
+    float bulletMaxLifeTime = 5f;
 
 
     //bools 
@@ -29,7 +32,33 @@ public class Gun : MonoBehaviour
     //Reference
     public Camera fpsCam;
     public RaycastHit rayHit;
+    Ray ray;
     public GameObject firePoint;
+    List<Bullet> bullets = new List<Bullet>();
+
+
+
+    public Transform raycastOrigin;
+    public Transform raycastDestination;
+
+    Vector3 GetPosition(Bullet bullet)
+    {
+        //Initalposition + Velocity*time + 0.5gravity * time * time
+        Vector3 gravity = Vector3.down * bulletDrop;
+
+        return (bullet.initialPosistion) + (bullet.initialVelocity * bullet.time) + (0.5f * gravity * bullet.time * bullet.time);
+    }
+
+    Bullet CreateBullet(Vector3 position, Vector3 velocity)
+    {
+        Bullet bullet = new Bullet();
+        bullet.initialPosistion = position;
+        bullet.initialVelocity = velocity;
+        bullet.time = 0.0f;
+        bullet.tracer = Instantiate(bulletTracer, position, Quaternion.identity);
+        bullet.tracer.AddPosition(position);
+        return bullet;
+    }
 
 
     [Space]
@@ -59,6 +88,7 @@ public class Gun : MonoBehaviour
     private void Update()
     {
         PlayerInput();
+        UpdateBullet(Time.deltaTime);
 
         //SetText to display bullets left
         text.SetText(bulletsLeft + " / " + magazineSize);
@@ -92,27 +122,49 @@ public class Gun : MonoBehaviour
             Shoot();
         }
     }
-    private void Shoot()
+
+    public void UpdateBullet(float deltaTime)
     {
-        readyToShoot = false;
+        SimulateBullets(deltaTime);
+    }
+
+    void SimulateBullets(float deltaTime)
+    {
+        bullets.ForEach(bullet =>
+        {
+            Vector3 p0 = GetPosition(bullet);
+            bullet.time += deltaTime;
+            Vector3 p1 = GetPosition(bullet);
+            RaycastSegment(p0, p1, bullet);
+
+        });
+    }
+
+    void DestroyBullets()
+    {
+        bullets.RemoveAll(bullet => bullet.time > bulletMaxLifeTime);
+    }
 
 
 
-
-
-
-        //Spread
+    void RaycastSegment(Vector3 start, Vector3 end, Bullet bullet)
+    {
+        // Spread
         //Calculate Direction with Spread
         Vector3 deviation3D = Random.insideUnitCircle * spread;
         Quaternion rot = Quaternion.LookRotation(Vector3.forward * range + deviation3D);
-        Vector3 forwardVector = fpsCam.transform.rotation * rot * Vector3.forward;
+        Vector3 forwardVector = firePoint.transform.rotation * rot * Vector3.forward;
 
-        //RayCast
-        if (Physics.Raycast(firePoint.transform.position, forwardVector, out rayHit, range))
+        Vector3 direction = end - start;
+        ray.origin = start;
+        ray.direction = end;
+
+
+        if (Physics.Raycast(firePoint.transform.position,raycastDestination.position, out rayHit, range))
         {
             Debug.DrawLine(firePoint.transform.position, rayHit.point, Color.red, 1.0f);
-            var tracer = Instantiate(bulletTracer, firePoint.transform.position, Quaternion.identity);
-            tracer.AddPosition(firePoint.transform.position);
+            //var tracer = Instantiate(bulletTracer, firePoint.transform.position, Quaternion.identity);
+           bullet.tracer.AddPosition(firePoint.transform.position);
 
             Debug.Log(rayHit.collider.name);
             //Plays the muzzleflash and Hiteffect
@@ -121,7 +173,8 @@ public class Gun : MonoBehaviour
             hitEffect.transform.forward = rayHit.normal;
             hitEffect.Emit(5);
 
-            tracer.transform.position = rayHit.point;
+            bullet.tracer.transform.position = rayHit.point;
+            bullet.time = bulletMaxLifeTime;
 
             if (rayHit.collider.CompareTag("Enemy"))
             {
@@ -142,6 +195,23 @@ public class Gun : MonoBehaviour
             }
 
         }
+        else
+        {
+            bullet.tracer.transform.position = end;
+        }
+
+
+    }
+
+
+
+    private void Shoot()
+    {
+        readyToShoot = false;
+
+        Vector3 velocity = (raycastDestination.position - raycastOrigin.position).normalized * bulletSpeed;
+        var bullet = CreateBullet(raycastOrigin.position, velocity);
+        bullets.Add(bullet);
 
         //ShakeCamera
         CameraShake.Shake(camShakeDuration, camShakeMagnitude);
@@ -149,8 +219,6 @@ public class Gun : MonoBehaviour
         //Graphics
         var tempbullet = Instantiate(bulletHoleGraphic, rayHit.point, Quaternion.LookRotation(rayHit.normal));
         tempbullet.transform.parent = rayHit.transform;
-
-
 
 
         bulletsLeft--;
@@ -175,7 +243,6 @@ public class Gun : MonoBehaviour
         bulletsLeft = magazineSize;
         reloading = false;
     }
-
 
 
 

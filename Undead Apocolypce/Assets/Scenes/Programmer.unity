@@ -1175,6 +1175,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 314082206}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &320350265 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8721713631473937702, guid: 9bc583dff4924604287278ce3953c8aa, type: 3}
+  m_PrefabInstance: {fileID: 8721713632025846421}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &357433703 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5872334862650651527, guid: 6ddfe40b25b0d844eae574aaefb97a35, type: 3}
@@ -3455,6 +3460,36 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!1 &1172465326
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1172465327}
+  m_Layer: 6
+  m_Name: GunDirection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1172465327
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172465326}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 320350265}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &1210821443 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 8721713631473937696, guid: 9bc583dff4924604287278ce3953c8aa, type: 3}
@@ -10800,6 +10835,53 @@ MonoBehaviour:
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 23800000, guid: c0006f12d47fcd6489a541fb13cfba7a, type: 2}
+--- !u!1 &1965697149 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8487219895235482836, guid: 9bc583dff4924604287278ce3953c8aa, type: 3}
+  m_PrefabInstance: {fileID: 8721713632025846421}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1965697151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965697149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 845755015c891ba4580b8680ca78a6bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  timeBetweenShooting: 0.05
+  spread: 0.01
+  range: 100
+  reloadTime: 2
+  timeBetweenShots: 0.5
+  impactForce: 10
+  bulletSpeed: 100
+  bulletDrop: 10
+  magazineSize: 10
+  bulletsPerTap: 1
+  allowButtonHold: 0
+  fpsCam: {fileID: 1210821443}
+  firePoint: {fileID: 994390176}
+  raycastOrigin: {fileID: 994390177}
+  raycastDestination: {fileID: 1172465327}
+  aimX: 0
+  aimY: -0.1
+  aimZ: 0.7
+  orgPosX: 0.35
+  orgPosY: -0.25
+  orgPosZ: 0.6
+  bulletHoleGraphic: {fileID: 1221224701472368963, guid: 6bf9d720f35ca734bbcf48c195e061c6, type: 3}
+  muzzleFlash: {fileID: 1586765244}
+  hitEffect: {fileID: 1532732282}
+  bulletTracer: {fileID: 5344350337031373210, guid: c32b5412f0739e14e910a3555c008b3e, type: 3}
+  CameraShake: {fileID: 1210821444}
+  camShakeMagnitude: 10
+  camShakeDuration: 10
+  text: {fileID: 2033572845}
 --- !u!1 &1976939358
 GameObject:
   m_ObjectHideFlags: 0
@@ -11986,7 +12068,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8721713631794155617, guid: 9bc583dff4924604287278ce3953c8aa, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8721713631961523907, guid: 9bc583dff4924604287278ce3953c8aa, type: 3}
       propertyPath: m_Layer
@@ -12064,6 +12146,10 @@ PrefabInstance:
       propertyPath: hitEffect
       value: 
       objectReference: {fileID: 1532732282}
+    - target: {fileID: 8721713632449123864, guid: 9bc583dff4924604287278ce3953c8aa, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8721713632449123864, guid: 9bc583dff4924604287278ce3953c8aa, type: 3}
       propertyPath: muzzleFlash
       value: 
