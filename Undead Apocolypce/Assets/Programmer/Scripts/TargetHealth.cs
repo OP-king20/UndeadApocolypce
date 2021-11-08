@@ -10,10 +10,6 @@ public class TargetHealth : MonoBehaviour
 
     public bool TakingDamage;
 
-    public List<GameObject> hitBoxes;
-
-
-
     private WaitForSeconds regenTime = new WaitForSeconds(0.01f);
     private Coroutine regen;
 
@@ -36,12 +32,10 @@ public class TargetHealth : MonoBehaviour
         }
     }
 
-    void Die()
+    public void Die()
     {
         Destroy(gameObject);
     }
-
-
 
     // Needs a rework so you can regenerate Health when not attacked. 
 
@@ -67,7 +61,6 @@ public class TargetHealth : MonoBehaviour
         }
 
     }
-
 
 
     public IEnumerator RegenStamina()

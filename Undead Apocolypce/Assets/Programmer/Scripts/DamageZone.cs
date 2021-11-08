@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class DamageZone : MonoBehaviour
 {
+    public enum Hitboxes {Head, Body, Limbs};
+    public Hitboxes hitbox;
 
-
-    public enum Zone { head, body, limbs }
-    public Zone damageZone;
-    
-
+    public static DamageZone instance;
 }
