@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
 {
-    public float health;
-    public float maxHealth;
-    public static TargetHealth instance;
-
-
+    public float health = 100f;
+    public float maxHealth = 100f;
+  
+    public HealthBar Hb;
+    public static PlayerHealth intsanse;
     public bool TakingDamage;
 
     private WaitForSeconds regenTime = new WaitForSeconds(0.01f);
@@ -18,14 +18,16 @@ public class TargetHealth : MonoBehaviour
     private void Start()
     {
         health = maxHealth;
+        Hb.SetMaxHealth(maxHealth);
 
-        
     }
 
     public void TakeDamage(float amount)
     {
         health -= amount;
         TakingDamage = true;
+
+        Hb.SetHealth(health);
 
         if (health <= 0)
         {
@@ -43,18 +45,18 @@ public class TargetHealth : MonoBehaviour
 
     public void Regen()
     {
-        if (health >= 0 )
+        if (health >= 0)
         {
-            
+
             //if (regen != null)
             //{
             //    StopCoroutine(regen);
             //    Debug.Log("Test");
             //}
-                regen = StartCoroutine(RegenStamina());
+            regen = StartCoroutine(RegenStamina());
             Debug.Log("Start");
 
-            
+
         }
         else
         {
@@ -67,7 +69,7 @@ public class TargetHealth : MonoBehaviour
 
     public IEnumerator RegenStamina()
     {
-        
+
         yield return new WaitForSeconds(2);
 
         while (health <= maxHealth)
@@ -92,6 +94,4 @@ public class TargetHealth : MonoBehaviour
     //    }
     //    regen = null;
     //}
-
-
 }

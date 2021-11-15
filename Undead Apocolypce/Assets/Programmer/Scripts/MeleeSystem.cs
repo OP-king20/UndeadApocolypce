@@ -54,6 +54,7 @@ public class MeleeSystem : MonoBehaviour
 
                 if (rayHit.collider.CompareTag("Enemy"))
                 {
+                    //TargetHealth target = rayHit.transform.GetComponent<TargetHealth>();
                     TargetHealth target = rayHit.transform.GetComponent<TargetHealth>();
                     //Setup damage Function
                     Debug.Log("Hit Enemy");
@@ -90,6 +91,7 @@ public class MeleeSystem : MonoBehaviour
                 if (rayHit.collider.CompareTag("Enemy"))
                 {
                     TargetHealth target = rayHit.transform.GetComponent<TargetHealth>();
+                    //DamageZone target = rayHit.transform.GetComponent<DamageZone>();
                     //Setup damage Function
                     Debug.Log("Hit Enemy");
                     if (target != null)

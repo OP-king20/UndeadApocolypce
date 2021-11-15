@@ -131,7 +131,8 @@ public class Zombie : MonoBehaviour
                     //Setup damage Function
                     Debug.Log("Hit Player");
                     TargetHealth target = rayHit.transform.GetComponent<TargetHealth>();
-                   
+                    //DamageZone target = rayHit.transform.GetComponent<DamageZone>();
+
                     if (target != null)
                     {
                         target.TakeDamage(attackDamage);
