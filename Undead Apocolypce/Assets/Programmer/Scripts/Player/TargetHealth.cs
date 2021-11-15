@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class TargetHealth : MonoBehaviour
 {
-    public float health = 100f;
-    public float maxHealth = 100f;
+    public float health;
+    public float maxHealth;
     public static TargetHealth instance;
 
+
     public bool TakingDamage;
-
-    public List<GameObject> hitBoxes;
-
-
 
     private WaitForSeconds regenTime = new WaitForSeconds(0.01f);
     private Coroutine regen;
@@ -21,6 +18,7 @@ public class TargetHealth : MonoBehaviour
     private void Start()
     {
         health = maxHealth;
+
         
     }
 
@@ -36,12 +34,10 @@ public class TargetHealth : MonoBehaviour
         }
     }
 
-    void Die()
+    public void Die()
     {
         Destroy(gameObject);
     }
-
-
 
     // Needs a rework so you can regenerate Health when not attacked. 
 
@@ -67,7 +63,6 @@ public class TargetHealth : MonoBehaviour
         }
 
     }
-
 
 
     public IEnumerator RegenStamina()
