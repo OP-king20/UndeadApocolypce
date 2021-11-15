@@ -7102,6 +7102,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1020382742}
     - target: {fileID: 6938605994072403965, guid: ae57387c5851d714bb6ce781a7713ca5, type: 3}
+      propertyPath: snappiness
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6938605994072403965, guid: ae57387c5851d714bb6ce781a7713ca5, type: 3}
       propertyPath: impactForce
       value: 20
       objectReference: {fileID: 0}
