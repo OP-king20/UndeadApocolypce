@@ -1,4 +1,4 @@
-v3.2.1f1 release date: 01-11-2021
+v3.2.1f2 release date: 03-12-2021
 
 
 IMPORTANT:

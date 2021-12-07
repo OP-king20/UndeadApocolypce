@@ -24,7 +24,7 @@
 	  <tr>
 	    <td colspan="2" class="style1"><p class="style1">&nbsp;</p>
 	      <p class="header1" style="color:#000">Release Notes 
-	      v3.2.1f1<hr>
+	      v3.2.1f2<hr>
 	      <p class="style21">&nbsp;</p>
 	      <p class="header2">Important</p>
 	      <p class="style21">&nbsp;</p>
@@ -53,14 +53,18 @@
           <p class="style1">&nbsp;</p>
 
 <p class="style1"><strong>New:</strong></p>
-<p class="style1">- Support for Unity 2021.2</p>
-<p class="style1">- Scene View handles for customizing the Indent and Surrounding surfaces to adjust the terrain.</p>
-<p class="style1">- General Settings &gt; Scene Settings &gt; Terrain Cell Angle Threshold, this can be used to automatically adjust the surrounding value and control the steepness of the terrain  when there are  height differences between the road and the terrain.</p>
+<p class="style1">- Support for HDRP 12.1.0</p>
 <p>&nbsp;</p>
 <p class="style1"><strong>Improved:</strong></p>
-<p class="style1">- Auto generated Side Objects: new option &quot;Strict Rules&quot; for auto generated side objects. The preset will only be selected when the terrain profile matches all set rules for this side object preset which are useful for stepped walls to avoid them from being generated on road sections where this side object will not fit well.</p>
+<p class="style1">- Roundabouts, distribute connections evenly at equal distances / angles</p>
+<p>&nbsp;</p>
+<p class="style1"><strong>Changed:</strong></p>
+<p class="style1">- Space to toggle on and off the highlight surfaces has changed to Ctrl + Space to avoid intereference with new space bar options in Unity 2021.2</p>
 <p class="style1">&nbsp;</p>
 <p class="style1"><strong>Fixed:</strong><br>
+  <br>
+  - Side objects not aligning with  adjusted road shapes  at connections with X or Z axis rotations</p>
+<p class="style1">- Indent and Surrounding values not updating to the default road type values after changing the road type of a specific road object<br>
   <br>
   - 
   Miscellaneous other small bugs and improvements</p>
