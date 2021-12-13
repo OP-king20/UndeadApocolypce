@@ -76,22 +76,22 @@ MonoBehaviour:
   - 0.5
   - 0.9166667
   - 1
-  OCDQQOODOQ: 
-  OOCOOCOOQO: 
-  OQDCQQOOQO: 
-  ODDCOQQDCQ: 
-  OQOQDDOODQ: 
-  ODODCDCOCO: 
-  OCQDOQQQQC: 
-  OODCCDQODC: 
-  OCDQQOODOQStart: 
-  OOCOOCOOQOStart: 
-  OQDCQQOOQOStart: 
-  ODDCOQQDCQStart: 
-  OQOQDDOODQStart: 
-  ODODCDCOCOStart: 
-  OCQDOQQQQCStart: 
-  OODCCDQODCStart: 
+  ODOCQDQODC: 
+  ODQQODQOOO: 
+  OOQODOCQDC: 
+  OCCQOOOOOO: 
+  ODCDODDDOO: 
+  OCDDQQDQCC: 
+  OODDDDDODD: 
+  OCDQQQOOQC: 
+  ODOCQDQODCStart: 
+  ODQQODQOOOStart: 
+  OOQODOCQDCStart: 
+  OCCQOOOOOOStart: 
+  ODCDODDDOOStart: 
+  OCDDQQDQCCStart: 
+  OODDDDDODDStart: 
+  OCDQQQOOQCStart: 
   frontLeftRoadInts: 
   frontRightRoadInts: 
   backLeftRoadInts: 
@@ -224,12 +224,16 @@ MonoBehaviour:
     sidewalks: 0
     sidewalkHeight: 0.2
     sidewalkWidth: 2
+    crosswalks: 0
+    crosswalkIntervals: 0
+    crosswalksIntersections: 0
+    crosswalkPrefab: {fileID: 0}
+    crosswalkType: 0
     roadMaterial: {fileID: 2100000, guid: f182e2714eb8a714a99ed091081ce16c, type: 2}
     roadMaterials: []
     roadPhysicsMaterial: {fileID: 0}
     roadPhysicsMaterials: []
-    connectionMaterial: {fileID: 2100000, guid: 3c555588afad81d428ad1704d5d015a7,
-      type: 2}
+    connectionMaterial: {fileID: 2100000, guid: 3c555588afad81d428ad1704d5d015a7, type: 2}
     isSideObject: 0
     isCustomRoad: 0
     subSegments: 1
@@ -278,7 +282,16 @@ MonoBehaviour:
     fixedDistance: 0
     connectionAngle: 0
     connectionRadius: 0
+    oneWay: 0
+    cornerRadiusMainRoad: 0
+    cornerSementsMainRoad: 0
+    cornerRadiusSecondaryRoad: 0
+    cornerRadiusSecondaryCurvature: 0
+    cornerSementsSecondaryRoad: 0
+    mainRoadsOnly: 0
     isRoadShape: 0
+    controlType: 0
+    vertexColor: {r: 0, g: 0, b: 0, a: 0}
   frontRoadTypeInt: 1
   frontRoadTypeID: 1
   frontRoadWidth: 6
@@ -310,7 +323,7 @@ MonoBehaviour:
   cornerPresetName: 
   selectedSidewalkPreset: 0
   sidewalkPresetName: 
-  OCDQCCOQQCCorner: 0
+  OQOODODOOOCorner: 0
   leftBottom: {x: -3.2928934, y: 0.5, z: -3.2928932}
   rightBottom: {x: 3.2928934, y: 0.5, z: -3.2928932}
   leftTop: {x: -3.2928934, y: 0.5, z: 3.2928932}
@@ -382,6 +395,8 @@ MonoBehaviour:
     rightSurroundingV3: {x: 10.252136, y: 0, z: -10.252129}
     leftRoadpoint: {x: -3, y: 0, z: -5.5}
     rightRoadpoint: {x: 3, y: 0, z: -5.5}
+    leftRoundingPoints: []
+    rightRoundingPoints: []
     leftCornerInt: -1
     rightCornerInt: -1
     leftIndentInt: 0
@@ -394,6 +409,7 @@ MonoBehaviour:
     additionalIndentDistance: 1.948485
     connectionAngle: 0
     alignmentHandleVecRotationGizmo: {x: 0, y: 0, z: 0}
+    inwards: 0
     roadType: 1
     roadTypeTimestamp: 0
   crossingOuterElement: 0
@@ -468,6 +484,11 @@ MonoBehaviour:
       sidewalks: 0
       sidewalkHeight: 0
       sidewalkWidth: 0
+      crosswalks: 0
+      crosswalkIntervals: 0
+      crosswalksIntersections: 0
+      crosswalkPrefab: {fileID: 0}
+      crosswalkType: 0
       roadMaterial: {fileID: 0}
       roadMaterials: []
       roadPhysicsMaterial: {fileID: 0}
@@ -521,7 +542,16 @@ MonoBehaviour:
       fixedDistance: 0
       connectionAngle: 0
       connectionRadius: 0
+      oneWay: 0
+      cornerRadiusMainRoad: 0
+      cornerSementsMainRoad: 0
+      cornerRadiusSecondaryRoad: 0
+      cornerRadiusSecondaryCurvature: 0
+      cornerSementsSecondaryRoad: 0
+      mainRoadsOnly: 0
       isRoadShape: 0
+      controlType: 0
+      vertexColor: {r: 0, g: 0, b: 0, a: 0}
     roadTypeID: 0
     roadTypeAI:
       roadTypeName: 
@@ -578,6 +608,11 @@ MonoBehaviour:
       sidewalks: 0
       sidewalkHeight: 0
       sidewalkWidth: 0
+      crosswalks: 0
+      crosswalkIntervals: 0
+      crosswalksIntersections: 0
+      crosswalkPrefab: {fileID: 0}
+      crosswalkType: 0
       roadMaterial: {fileID: 0}
       roadMaterials: []
       roadPhysicsMaterial: {fileID: 0}
@@ -631,7 +666,16 @@ MonoBehaviour:
       fixedDistance: 0
       connectionAngle: 0
       connectionRadius: 0
+      oneWay: 0
+      cornerRadiusMainRoad: 0
+      cornerSementsMainRoad: 0
+      cornerRadiusSecondaryRoad: 0
+      cornerRadiusSecondaryCurvature: 0
+      cornerSementsSecondaryRoad: 0
+      mainRoadsOnly: 0
       isRoadShape: 0
+      controlType: 0
+      vertexColor: {r: 0, g: 0, b: 0, a: 0}
     roadTypeAIid: 0
     aIInit: 0
     roadTypeIndex: 0
@@ -641,6 +685,8 @@ MonoBehaviour:
     prioritySectionEnd: -1
     angle: 0
     prevAngle: 0
+    angleWithNextRoad: 0
+    angleWithPreviousRoad: 0
     roadWidth: 0
     controlPoint: {x: 0, y: 0, z: 0}
     roadShape: []
@@ -651,6 +697,7 @@ MonoBehaviour:
     leftFixedDistance: 0
     rightFixedDistance: 0
     buildPriority: 0
+    addedNodeAtStart: 0
     highPriorityConnection: 0
     triangulationType: 0
     adjustRadius: 0
@@ -658,8 +705,13 @@ MonoBehaviour:
     defaultSegments: 5
     segments: 5
     radius: 3
+    defaultRadius: 1
+    cornerSegments: 5
+    defaultCornerSegments: 5
     leftCornerAngle: 1
     rightCornerAngle: 1
+    defaultLeftCornerAngle: 0.35
+    defaultRightCornerAngle: 0.35
     leftCurvatureDir: {x: 0, y: 0, z: 0}
     leftCurvatureVec: {x: 0, y: 0, z: 0}
     rightCurvatureDir: {x: 0, y: 0, z: 0}
@@ -678,6 +730,8 @@ MonoBehaviour:
     outerCorner: {x: 0, y: 0, z: 0}
     cornerHandleScale: 1
     leftRoundingPoints: []
+    originalLeftRoundingPoints: 0
+    originalRightRoundingPoints: 0
     rightRoundingPoints: []
     innerRoundingPoints: []
     priorityLeftPoints: []
@@ -691,6 +745,8 @@ MonoBehaviour:
     middleIndex: 0
     middleIndentIndexLeft: -1
     middleIndentIndexRight: -1
+    priorityPointsMainLeftIndex: -1
+    priorityPointsMainRightIndex: -1
     leftSidewalk:
       name: 
       id: 0
@@ -706,7 +762,10 @@ MonoBehaviour:
       outerSideCurbUVControl: 0
       material: {fileID: 0}
       hardEdges: 0
+      hardEdgePadding: 0
       shape: []
+      shapePercentages: []
+      shapeCurbPercentages: []
       sidewalkUVs: []
       curbUVs: []
       doConnectionTri: 
@@ -722,9 +781,43 @@ MonoBehaviour:
       minEnd: 1
       maxEnd: 1
       lockUVs: 0
+      planarUVs: 0
+      planarTileSize: 1
+      planarTiling: {x: 1, y: 1}
+      planarUVRatioX: 1
+      planarUVRatioY: 1
       cornerRadius: 1
+      defaultCornerRadius: 1
       cornerSegments: 5
+      defaultCornerSegments: 5
       innerSegmentDistance: 0.5
+      pavementIndex: 2
+      pavementSize: 0
+      curbVecCount: 0
+      subdivision: 0
+      crosswalkPavement: 0
+      crosswalkPavementCurb: 0
+      includeOuterStrip: 0
+      crosswalkUVs: []
+      crosswalkLevelYLeft: 0.9
+      crosswalkLevelYRight: 0.1
+      crosswalkStripYLeft: 0.95
+      crosswalkStripYRight: 0.05
+      crosswalkSize: 5
+      crosswalkWidth: 1
+      crosswalkMinHeight: 0
+      crosswalkMaxHeight: 0.05
+      bottomInnerDistance: 0
+      topInnerDistance: 0
+      bottomStripDistance: 0
+      topStripDistance: 0
+      yPositions: []
+      realPavementIndex: 0
+      realColCount: 0
+      crosswalkOuterUVX: 0
+      crosswalkOuterOffset: 0
+      crosswalkOuterStripOffset: 0
+      crosswalkStripUVX: 0
     rightSidewalk:
       name: 
       id: 0
@@ -740,7 +833,10 @@ MonoBehaviour:
       outerSideCurbUVControl: 0
       material: {fileID: 0}
       hardEdges: 0
+      hardEdgePadding: 0
       shape: []
+      shapePercentages: []
+      shapeCurbPercentages: []
       sidewalkUVs: []
       curbUVs: []
       doConnectionTri: 
@@ -756,11 +852,63 @@ MonoBehaviour:
       minEnd: 1
       maxEnd: 1
       lockUVs: 0
+      planarUVs: 0
+      planarTileSize: 1
+      planarTiling: {x: 1, y: 1}
+      planarUVRatioX: 1
+      planarUVRatioY: 1
       cornerRadius: 1
+      defaultCornerRadius: 1
       cornerSegments: 5
+      defaultCornerSegments: 5
       innerSegmentDistance: 0.5
+      pavementIndex: 2
+      pavementSize: 0
+      curbVecCount: 0
+      subdivision: 0
+      crosswalkPavement: 0
+      crosswalkPavementCurb: 0
+      includeOuterStrip: 0
+      crosswalkUVs: []
+      crosswalkLevelYLeft: 0.9
+      crosswalkLevelYRight: 0.1
+      crosswalkStripYLeft: 0.95
+      crosswalkStripYRight: 0.05
+      crosswalkSize: 5
+      crosswalkWidth: 1
+      crosswalkMinHeight: 0
+      crosswalkMaxHeight: 0.05
+      bottomInnerDistance: 0
+      topInnerDistance: 0
+      bottomStripDistance: 0
+      topStripDistance: 0
+      yPositions: []
+      realPavementIndex: 0
+      realColCount: 0
+      crosswalkOuterUVX: 0
+      crosswalkOuterOffset: 0
+      crosswalkOuterStripOffset: 0
+      crosswalkStripUVX: 0
     leftSidewalkActive: 0
+    leftCrosswalkActive: 0
     rightSidewalkActive: 0
+    rightCrosswalkActive: 0
+    maxCrosswalkSize: 0
+    crosswalkRoundingVecLeftAdded: 0
+    crosswalkRoundingVecRightAdded: 0
+    crosswalkRoundingVecLeftEndAdded: 0
+    crosswalkRoundingVecRightEndAdded: 0
+    firstLeftRoundingVec: {x: 0, y: 0, z: 0}
+    firstRightRoundingVec: {x: 0, y: 0, z: 0}
+    crosswalkAddedDistance: 0
+    leftSidewalkid: 0
+    rightSidewalkid: 0
+    leftSidewalkIndex: 0
+    rightSidewalkIndex: 0
+    leftSidewalkGO: {fileID: 0}
+    rightSidewalkGO: {fileID: 0}
+    leftSidewalkTris: 
+    rightSidewalkTris: 
     leftIndentvecs: []
     rightIndentvecs: []
     leftSurroundingvecs: []
@@ -782,6 +930,7 @@ MonoBehaviour:
     middleInt: 0
     primaryPriorityConnection: 0
     secondaryPriorityConnection: 0
+    manuallyPrioritized: 0
     shapeSubSegments: 0
     normalIndexes: 
     primarySection: 0
@@ -792,10 +941,15 @@ MonoBehaviour:
         position: 0
         direction: 0
         turnDirection: 0
+        TurnOptions: 0
         laneIndex: 0
       laneIndex: 0
       direction: 0
+    forward: {x: 0, y: 0, z: 0}
+    sideways: {x: 0, y: 0, z: 0}
+    orderedIndex: 0
     hasChanged: 0
+    isset: 0
   secondPriorityConnection:
     name: 
     road: {fileID: 0}
@@ -856,6 +1010,11 @@ MonoBehaviour:
       sidewalks: 0
       sidewalkHeight: 0
       sidewalkWidth: 0
+      crosswalks: 0
+      crosswalkIntervals: 0
+      crosswalksIntersections: 0
+      crosswalkPrefab: {fileID: 0}
+      crosswalkType: 0
       roadMaterial: {fileID: 0}
       roadMaterials: []
       roadPhysicsMaterial: {fileID: 0}
@@ -909,7 +1068,16 @@ MonoBehaviour:
       fixedDistance: 0
       connectionAngle: 0
       connectionRadius: 0
+      oneWay: 0
+      cornerRadiusMainRoad: 0
+      cornerSementsMainRoad: 0
+      cornerRadiusSecondaryRoad: 0
+      cornerRadiusSecondaryCurvature: 0
+      cornerSementsSecondaryRoad: 0
+      mainRoadsOnly: 0
       isRoadShape: 0
+      controlType: 0
+      vertexColor: {r: 0, g: 0, b: 0, a: 0}
     roadTypeID: 0
     roadTypeAI:
       roadTypeName: 
@@ -966,6 +1134,11 @@ MonoBehaviour:
       sidewalks: 0
       sidewalkHeight: 0
       sidewalkWidth: 0
+      crosswalks: 0
+      crosswalkIntervals: 0
+      crosswalksIntersections: 0
+      crosswalkPrefab: {fileID: 0}
+      crosswalkType: 0
       roadMaterial: {fileID: 0}
       roadMaterials: []
       roadPhysicsMaterial: {fileID: 0}
@@ -1019,7 +1192,16 @@ MonoBehaviour:
       fixedDistance: 0
       connectionAngle: 0
       connectionRadius: 0
+      oneWay: 0
+      cornerRadiusMainRoad: 0
+      cornerSementsMainRoad: 0
+      cornerRadiusSecondaryRoad: 0
+      cornerRadiusSecondaryCurvature: 0
+      cornerSementsSecondaryRoad: 0
+      mainRoadsOnly: 0
       isRoadShape: 0
+      controlType: 0
+      vertexColor: {r: 0, g: 0, b: 0, a: 0}
     roadTypeAIid: 0
     aIInit: 0
     roadTypeIndex: 0
@@ -1029,6 +1211,8 @@ MonoBehaviour:
     prioritySectionEnd: -1
     angle: 0
     prevAngle: 0
+    angleWithNextRoad: 0
+    angleWithPreviousRoad: 0
     roadWidth: 0
     controlPoint: {x: 0, y: 0, z: 0}
     roadShape: []
@@ -1039,6 +1223,7 @@ MonoBehaviour:
     leftFixedDistance: 0
     rightFixedDistance: 0
     buildPriority: 0
+    addedNodeAtStart: 0
     highPriorityConnection: 0
     triangulationType: 0
     adjustRadius: 0
@@ -1046,8 +1231,13 @@ MonoBehaviour:
     defaultSegments: 5
     segments: 5
     radius: 3
+    defaultRadius: 1
+    cornerSegments: 5
+    defaultCornerSegments: 5
     leftCornerAngle: 1
     rightCornerAngle: 1
+    defaultLeftCornerAngle: 0.35
+    defaultRightCornerAngle: 0.35
     leftCurvatureDir: {x: 0, y: 0, z: 0}
     leftCurvatureVec: {x: 0, y: 0, z: 0}
     rightCurvatureDir: {x: 0, y: 0, z: 0}
@@ -1066,6 +1256,8 @@ MonoBehaviour:
     outerCorner: {x: 0, y: 0, z: 0}
     cornerHandleScale: 1
     leftRoundingPoints: []
+    originalLeftRoundingPoints: 0
+    originalRightRoundingPoints: 0
     rightRoundingPoints: []
     innerRoundingPoints: []
     priorityLeftPoints: []
@@ -1079,6 +1271,8 @@ MonoBehaviour:
     middleIndex: 0
     middleIndentIndexLeft: -1
     middleIndentIndexRight: -1
+    priorityPointsMainLeftIndex: -1
+    priorityPointsMainRightIndex: -1
     leftSidewalk:
       name: 
       id: 0
@@ -1094,7 +1288,10 @@ MonoBehaviour:
       outerSideCurbUVControl: 0
       material: {fileID: 0}
       hardEdges: 0
+      hardEdgePadding: 0
       shape: []
+      shapePercentages: []
+      shapeCurbPercentages: []
       sidewalkUVs: []
       curbUVs: []
       doConnectionTri: 
@@ -1110,9 +1307,43 @@ MonoBehaviour:
       minEnd: 1
       maxEnd: 1
       lockUVs: 0
+      planarUVs: 0
+      planarTileSize: 1
+      planarTiling: {x: 1, y: 1}
+      planarUVRatioX: 1
+      planarUVRatioY: 1
       cornerRadius: 1
+      defaultCornerRadius: 1
       cornerSegments: 5
+      defaultCornerSegments: 5
       innerSegmentDistance: 0.5
+      pavementIndex: 2
+      pavementSize: 0
+      curbVecCount: 0
+      subdivision: 0
+      crosswalkPavement: 0
+      crosswalkPavementCurb: 0
+      includeOuterStrip: 0
+      crosswalkUVs: []
+      crosswalkLevelYLeft: 0.9
+      crosswalkLevelYRight: 0.1
+      crosswalkStripYLeft: 0.95
+      crosswalkStripYRight: 0.05
+      crosswalkSize: 5
+      crosswalkWidth: 1
+      crosswalkMinHeight: 0
+      crosswalkMaxHeight: 0.05
+      bottomInnerDistance: 0
+      topInnerDistance: 0
+      bottomStripDistance: 0
+      topStripDistance: 0
+      yPositions: []
+      realPavementIndex: 0
+      realColCount: 0
+      crosswalkOuterUVX: 0
+      crosswalkOuterOffset: 0
+      crosswalkOuterStripOffset: 0
+      crosswalkStripUVX: 0
     rightSidewalk:
       name: 
       id: 0
@@ -1128,7 +1359,10 @@ MonoBehaviour:
       outerSideCurbUVControl: 0
       material: {fileID: 0}
       hardEdges: 0
+      hardEdgePadding: 0
       shape: []
+      shapePercentages: []
+      shapeCurbPercentages: []
       sidewalkUVs: []
       curbUVs: []
       doConnectionTri: 
@@ -1144,11 +1378,63 @@ MonoBehaviour:
       minEnd: 1
       maxEnd: 1
       lockUVs: 0
+      planarUVs: 0
+      planarTileSize: 1
+      planarTiling: {x: 1, y: 1}
+      planarUVRatioX: 1
+      planarUVRatioY: 1
       cornerRadius: 1
+      defaultCornerRadius: 1
       cornerSegments: 5
+      defaultCornerSegments: 5
       innerSegmentDistance: 0.5
+      pavementIndex: 2
+      pavementSize: 0
+      curbVecCount: 0
+      subdivision: 0
+      crosswalkPavement: 0
+      crosswalkPavementCurb: 0
+      includeOuterStrip: 0
+      crosswalkUVs: []
+      crosswalkLevelYLeft: 0.9
+      crosswalkLevelYRight: 0.1
+      crosswalkStripYLeft: 0.95
+      crosswalkStripYRight: 0.05
+      crosswalkSize: 5
+      crosswalkWidth: 1
+      crosswalkMinHeight: 0
+      crosswalkMaxHeight: 0.05
+      bottomInnerDistance: 0
+      topInnerDistance: 0
+      bottomStripDistance: 0
+      topStripDistance: 0
+      yPositions: []
+      realPavementIndex: 0
+      realColCount: 0
+      crosswalkOuterUVX: 0
+      crosswalkOuterOffset: 0
+      crosswalkOuterStripOffset: 0
+      crosswalkStripUVX: 0
     leftSidewalkActive: 0
+    leftCrosswalkActive: 0
     rightSidewalkActive: 0
+    rightCrosswalkActive: 0
+    maxCrosswalkSize: 0
+    crosswalkRoundingVecLeftAdded: 0
+    crosswalkRoundingVecRightAdded: 0
+    crosswalkRoundingVecLeftEndAdded: 0
+    crosswalkRoundingVecRightEndAdded: 0
+    firstLeftRoundingVec: {x: 0, y: 0, z: 0}
+    firstRightRoundingVec: {x: 0, y: 0, z: 0}
+    crosswalkAddedDistance: 0
+    leftSidewalkid: 0
+    rightSidewalkid: 0
+    leftSidewalkIndex: 0
+    rightSidewalkIndex: 0
+    leftSidewalkGO: {fileID: 0}
+    rightSidewalkGO: {fileID: 0}
+    leftSidewalkTris: 
+    rightSidewalkTris: 
     leftIndentvecs: []
     rightIndentvecs: []
     leftSurroundingvecs: []
@@ -1170,6 +1456,7 @@ MonoBehaviour:
     middleInt: 0
     primaryPriorityConnection: 0
     secondaryPriorityConnection: 0
+    manuallyPrioritized: 0
     shapeSubSegments: 0
     normalIndexes: 
     primarySection: 0
@@ -1180,10 +1467,15 @@ MonoBehaviour:
         position: 0
         direction: 0
         turnDirection: 0
+        TurnOptions: 0
         laneIndex: 0
       laneIndex: 0
       direction: 0
+    forward: {x: 0, y: 0, z: 0}
+    sideways: {x: 0, y: 0, z: 0}
+    orderedIndex: 0
     hasChanged: 0
+    isset: 0
   adjustMainRadiusFlag: 0
   disableAdjustMainRadiusFlag: 0
   showScaleSliderAtPrimary: 0
@@ -1267,6 +1559,8 @@ MonoBehaviour:
     rightSurroundingV3: {x: 10.252136, y: 0, z: -10.252129}
     leftRoadpoint: {x: -3, y: 0, z: -5.5}
     rightRoadpoint: {x: 3, y: 0, z: -5.5}
+    leftRoundingPoints: []
+    rightRoundingPoints: []
     leftCornerInt: -1
     rightCornerInt: -1
     leftIndentInt: 0
@@ -1279,6 +1573,7 @@ MonoBehaviour:
     additionalIndentDistance: 1.948485
     connectionAngle: 0
     alignmentHandleVecRotationGizmo: {x: 0, y: 0, z: 0}
+    inwards: 0
     roadType: 1
     roadTypeTimestamp: 0
   - centerPoint: {x: 0, y: 0, z: 5.5}
@@ -1341,6 +1636,8 @@ MonoBehaviour:
     rightSurroundingV3: {x: -10.252136, y: 0, z: 10.252129}
     leftRoadpoint: {x: 3, y: 0, z: 5.5}
     rightRoadpoint: {x: -3, y: 0, z: 5.5}
+    leftRoundingPoints: []
+    rightRoundingPoints: []
     leftCornerInt: -1
     rightCornerInt: -1
     leftIndentInt: 0
@@ -1353,6 +1650,7 @@ MonoBehaviour:
     additionalIndentDistance: 1.948485
     connectionAngle: 0
     alignmentHandleVecRotationGizmo: {x: 0, y: 0, z: 0}
+    inwards: 0
     roadType: 1
     roadTypeTimestamp: 0
   - centerPoint: {x: -5.5, y: 0, z: 0}
@@ -1415,6 +1713,8 @@ MonoBehaviour:
     rightSurroundingV3: {x: -10.252136, y: 0, z: -10.252129}
     leftRoadpoint: {x: -5.5, y: 0, z: 3}
     rightRoadpoint: {x: -5.5, y: 0, z: -3}
+    leftRoundingPoints: []
+    rightRoundingPoints: []
     leftCornerInt: -1
     rightCornerInt: -1
     leftIndentInt: 0
@@ -1427,6 +1727,7 @@ MonoBehaviour:
     additionalIndentDistance: 1.948485
     connectionAngle: 0
     alignmentHandleVecRotationGizmo: {x: 0, y: 0, z: 0}
+    inwards: 0
     roadType: 1
     roadTypeTimestamp: 0
   - centerPoint: {x: 5.5, y: 0, z: 0}
@@ -1489,6 +1790,8 @@ MonoBehaviour:
     rightSurroundingV3: {x: 10.252136, y: 0, z: 10.252129}
     leftRoadpoint: {x: 5.5, y: 0, z: -3}
     rightRoadpoint: {x: 5.5, y: 0, z: 3}
+    leftRoundingPoints: []
+    rightRoundingPoints: []
     leftCornerInt: -1
     rightCornerInt: -1
     leftIndentInt: 0
@@ -1501,6 +1804,7 @@ MonoBehaviour:
     additionalIndentDistance: 1.948485
     connectionAngle: 0
     alignmentHandleVecRotationGizmo: {x: 0, y: 0, z: 0}
+    inwards: 0
     roadType: 1
     roadTypeTimestamp: 0
   sidewalkControlElements:
@@ -2302,6 +2606,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2313,6 +2619,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -2325,6 +2632,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &64424354639459620
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2335,9 +2643,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!1 &1719437885002130
 GameObject:
@@ -2407,6 +2715,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2418,6 +2728,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -2430,6 +2741,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &64480550856458174
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2440,7 +2752,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 0}
